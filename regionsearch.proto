@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+message regionSearch {
+    message flags {
+        required bool hasNews = 1;
+        required bool isBestRatedItem = 2;
+        required bool isNewHotel = 3;
+        required bool isItemRated = 4;
+    }
+
+    message rating {
+        required string review = 1;
+        required int32 basedOn = 2;
+        required int32 category = 3;
+        required int32 superior = 4;
+        required string itemTagline = 5;
+        required int32 overallLiking = 6;
+        required int32 overallLikingIndex = 7;
+        required string overallLikingTranslation = 8;
+    }
+
+    message topDeal {
+        required bool isTopDeal = 1;
+        required int32 criterionId = 2;
+        required string criterion = 3;
+        required int32 percentage = 4;
+        required string comparePrice = 5;
+    }
+
+    message item {
+        required int32 id = 1;
+        required bool isItemAvailable = 2;
+        required bool isPremiumHotelPartner = 3;
+        required string name = 4;
+        optional string homepageLink = 5;
+
+        optional flags flags = 6;
+        optional rating rating = 7;
+        optional topDeal topDeal = 8;
+
+    }
+
+    repeated item item = 1;
+    required int32 state = 2;
+    required string version = 3;
+}
